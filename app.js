@@ -225,7 +225,7 @@
 
   function sourcesHtml(e) {
     return [].concat(e.src).map(k => SOURCES[k]).filter(Boolean)
-      .map(s => `<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.l)}</a>`).join("<br>") || esc(t().noSrc);
+      .map(s => s.u ? `<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.l)}</a>` : esc(s.l)).join("<br>") || esc(t().noSrc);
   }
 
   function entry(r) {
