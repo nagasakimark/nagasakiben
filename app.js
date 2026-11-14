@@ -13,7 +13,8 @@
   // ── UI text ──
   const T = {
     en: {
-      brandSub: "Nagasaki-ben Dictionary", tabHome: "Home", tabBrowse: "Browse", tabQuiz: "Quiz", tabAbout: "About",
+      brandSub: "Nagasaki-ben Dictionary", tabHome: "Home", tabBrowse: "Browse", tabQuiz: "Quiz", tabAbout: "About", tabTalk: "Talk",
+      talkTitle: "Say it in Nagasaki-ben", talkLead: "Everyday standard Japanese, and how a Nagasaki city local would say it. Tap a highlighted part to see what changed.", talkStd: "Standard", talkNb: "Nagasaki-ben", talkTap: "Tap a highlighted part", openEntry: "Dictionary entry",
       heroTitle: "Learn Nagasaki-ben", heroLead: "{n} words, phrases and grammar points, with real example sentences.",
       search: "Search: English, かな, kanji or romaji", today: "Word of the day", seeEntry: "Open entry",
       bySound: "Browse by sound", byKind: "Browse by type", all: "All",
@@ -29,7 +30,8 @@
       aboutTitle: "About this dictionary"
     },
     ja: {
-      brandSub: "長崎弁辞典", tabHome: "ホーム", tabBrowse: "一覧", tabQuiz: "クイズ", tabAbout: "について",
+      brandSub: "長崎弁辞典", tabHome: "ホーム", tabBrowse: "一覧", tabQuiz: "クイズ", tabAbout: "について", tabTalk: "話そう",
+      talkTitle: "長崎弁で言ってみよう", talkLead: "ふだんの標準語を、長崎市の人の自然な言い方に。色のついた部分をタップすると説明が出ます。", talkStd: "標準語", talkNb: "長崎弁", talkTap: "色の部分をタップ", openEntry: "辞書で見る",
       heroTitle: "長崎弁を学ぼう", heroLead: "{n}語の長崎弁。実際の例文つき。",
       search: "検索：かな・漢字・ローマ字・英語", today: "今日のことば", seeEntry: "くわしく見る",
       bySound: "五十音で探す", byKind: "種類で探す", all: "すべて",
@@ -129,7 +131,7 @@
   let lastName = "";
   function render() {
     const r = route(); setTab(r.name);
-    const views = { home, browse, entry, quiz, about };
+    const views = { home, browse, entry, quiz, about, talk };
     (views[r.name] || home)(r);
     if (r.name !== lastName || r.name === "entry") window.scrollTo(0, 0);
     lastName = r.name;
@@ -322,6 +324,42 @@
       Q.picked = +b.dataset.n; if (it.opts[Q.picked] === it.e) Q.score++; quiz();
     });
     const nx = document.getElementById("nextQ"); if (nx) nx.onclick = () => { Q.i++; Q.picked = null; quiz(); window.scrollTo(0, 0); };
+  }
+
+  // talk
+  function talk(r) {
+    if (swipeOff) swipeOff();
+    const cat = r.q.get("c") || "";
+    const cats = window.TALK_CATS; const F = window.FEATURES;
+    const items = window.TALK.filter(s => !cat || s.cat === cat);
+    const line = (s, n, which) => s.p.map((part, k) => typeof part === "string" ? ruby(part)
+      : `<button type="button" class="seg seg${(k % 4)}" data-s="${n}" data-k="${k}">${ruby(part[which])}</button>`).join("");
+    app.innerHTML = `
+      <h1>${t().talkTitle}</h1><p class="lead">${t().talkLead}</p>
+      <div class="chips">
+        <a class="chip ${!cat ? "on" : ""}" href="#/talk">${t().all}</a>
+        ${Object.keys(cats).map(c => `<a class="chip ${cat === c ? "on" : ""}" href="#/talk?c=${c}">${cats[c][lang]}</a>`).join("")}
+      </div>
+      <div class="talk-list">${items.map(s => { const n = window.TALK.indexOf(s); return `
+        <article class="card talk" data-n="${n}">
+          ${lang === "en" ? `<div class="talk__en">${esc(s.en)}</div>` : ""}
+          <div class="talk__row"><span class="talk__label">${t().talkStd}</span><div class="talk__std" lang="ja">${line(s, n, 1)}</div></div>
+          <div class="talk__row"><span class="talk__label talk__label--nb">${t().talkNb}</span><div class="talk__nb" lang="ja">${line(s, n, 0)}</div></div>
+          <div class="talk__explain" hidden></div>
+        </article>`; }).join("")}</div>`;
+    const show = (btn, pin) => {
+      const card = btn.closest(".talk"); const s = window.TALK[+btn.dataset.s]; const part = s.p[+btn.dataset.k]; const f = F[part[2]];
+      app.querySelectorAll(".seg.on").forEach(b => { if (b.closest(".talk") === card || pin) b.classList.remove("on"); });
+      card.querySelectorAll(`.seg[data-k="${btn.dataset.k}"]`).forEach(b => b.classList.add("on"));
+      const box = card.querySelector(".talk__explain"); box.hidden = false;
+      box.innerHTML = `<div class="talk__pair" lang="ja"><span>${ruby(part[1])}</span> → <b>${ruby(part[0])}</b></div>
+        <p ${lang === "ja" ? 'lang="ja"' : ""}>${esc(f[lang])}</p>
+        ${f.id && byId[f.id] ? `<a href="#/entry/${f.id}">${t().openEntry}: ${esc(plain(byId[f.id].d))} →</a>` : ""}`;
+    };
+    app.querySelectorAll(".seg").forEach(b => {
+      b.addEventListener("click", () => show(b, true));
+      b.addEventListener("mouseenter", () => { if (matchMedia("(hover: hover)").matches) show(b, false); });
+    });
   }
 
   function about() {

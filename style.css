@@ -235,3 +235,28 @@ h2 { font-size: 1.15rem; margin: 26px 0 10px; }
   .sticky-tools { top: 60px; }
 }
 .entry__word, .quiz__word, .daily__word { font-size: clamp(1.9rem, 10.5vw, 2.9rem); }
+
+/* ── talk ── */
+.tabs { grid-template-columns: repeat(5, 1fr); }
+.tabs a { font-size: .66rem; }
+.talk-list { display: grid; gap: 12px; }
+.talk { padding: 16px; }
+.talk__en { font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+.talk__row { display: grid; gap: 2px; margin-top: 8px; }
+.talk__label { font-size: .7rem; font-weight: 800; letter-spacing: .05em; color: var(--muted); text-transform: uppercase; }
+.talk__label--nb { color: var(--red); }
+.talk__std { font-size: 1.05rem; color: var(--ink-soft); line-height: 2.1; }
+.talk__nb { font-size: 1.4rem; font-weight: 800; line-height: 2.1; }
+.seg {
+  font: inherit; color: inherit; border: 0; cursor: pointer; padding: 0 1px; margin: 0;
+  border-radius: 6px; border-bottom: 3px solid; line-height: inherit;
+}
+.seg0 { background: #fde8e4; border-color: #e07a68; }
+.seg1 { background: #e3ecf5; border-color: #5b8cc0; }
+.seg2 { background: #fbf1d6; border-color: #d2a43a; }
+.seg3 { background: #e3f3e8; border-color: #5aa877; }
+.seg.on { outline: 3px solid var(--ink); outline-offset: 1px; }
+.talk__explain { margin-top: 12px; background: var(--bg); border-radius: 12px; padding: 12px 14px; }
+.talk__explain p { margin: 6px 0; }
+.talk__pair { font-size: 1.15rem; }
+.talk__explain a { font-weight: 700; }
