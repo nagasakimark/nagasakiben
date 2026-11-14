@@ -1,20 +1,42 @@
 <!DOCTYPE html>
-<!-- Dev: run `npm run dev` and open the URL Vite prints (e.g. http://localhost:5173).
-     Do not open this file with VS Code Live Server — .jsx must be transformed and needs correct MIME types. -->
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/nagasakiben/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Nagasaki-ben (長崎弁) learner dictionary for English speakers — glosses, examples, offline."
-    />
-    <title>Nagasaki Ben Dictionary</title>
-    <script type="module" crossorigin src="/nagasakiben/assets/index-DkGGDWCy.js"></script>
-    <link rel="stylesheet" crossorigin href="/nagasakiben/assets/index-CWrhYNEp.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1f4e79" />
+  <meta name="description" content="Nagasaki-ben (長崎弁) dictionary for learners — meanings, real example sentences, English / Japanese switch." />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Nagasaki-ben Dictionary 長崎弁辞典</title>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="#/">
+      <img src="logo.png" alt="" width="36" height="36" />
+      <span class="brand__text"><span class="brand__ja">長崎弁</span><span class="brand__en" data-t="brandSub"></span></span>
+    </a>
+    <div class="top__tools">
+      <button class="size-btn" id="sizeBtn" type="button" aria-label="Text size">Aa</button>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="ja">日本語</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <nav class="tabs" aria-label="Main">
+    <a href="#/" data-tab="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span data-t="tabHome"></span></a>
+    <a href="#/browse" data-tab="browse"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span data-t="tabBrowse"></span></a>
+    <a href="#/quiz" data-tab="quiz"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9a3 3 0 1 1 4.5 2.6c-.9.5-1.5 1.2-1.5 2.4"/><circle cx="12" cy="18" r=".6"/><circle cx="12" cy="12" r="10"/></svg><span data-t="tabQuiz"></span></a>
+    <a href="#/about" data-tab="about"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 11v6"/><circle cx="12" cy="7.5" r=".6"/></svg><span data-t="tabAbout"></span></a>
+  </nav>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
 </html>
