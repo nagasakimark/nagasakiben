@@ -81,7 +81,7 @@
   const norm = s => kata2hira(plain(s).normalize("NFKC").toLowerCase()).replace(/[〜～\s・／/、。！？!?「」]/g, "");
   ENTRIES.forEach(e => {
     e.rom = romaji(e.r);
-    e.hay = [e.d, e.r, e.rom, e.en, e.std, e.nJa || ""].map(norm).join("|") + "|" + e.rom.replace(/'/g, "");
+    e.hay = [e.d, e.r, e.rom, e.en, e.std, e.nJa || "", e.nEn || ""].map(norm).join("|") + "|" + e.rom.replace(/'/g, "");
     const first = e.r.normalize("NFD")[0].normalize("NFC");
     const g = GYO.find(([, set]) => set.includes(kata2hira(e.r[0])) || set.includes(first));
     e.gyo = g ? g[0] : "あ";
