@@ -9,7 +9,7 @@
 //   nEn  English note      nJa  Japanese note (解説)
 //   ex   examples: [dialect, standard Japanese, English]
 //   src  key in SOURCES (or an array of keys)
-//   check true = widely used Kyushu word, but not confirmed in the official sources here (ask a local)
+//   check true = widely used Kyushu word, but not confirmed in the official sources here 
 
 window.SOURCES = {
   kids: { l: "長崎市「イラストで学ぶ長崎弁」", u: "https://www.city.nagasaki.lg.jp/site/kodomo/list44-214.html" },
@@ -230,10 +230,10 @@ window.ENTRIES = [
     ex: [["リュックばしょうて、行[い]ってこんね。", "リュックを背負[せお]って、行[い]ってらっしゃい。", "Put your rucksack on and off you go."]],
     src: "local" },
   { id: "gamenchoro", k: "word", d: "がめんちょろ", r: "がめんちょろ", std: "おまめさん／みそっかす", en: "a little kid who joins the game but doesn't really count",
-    nEn: "The small child allowed to play along without being \"it\" or counted properly. Grown-ups also use it jokingly about themselves: \"sorry, I'm a beginner / useless here\". Documented for Gotō; check how your friends use it.",
+    nEn: "The small child allowed to play along without being \"it\" or counted properly. Grown-ups also use it jokingly about themselves: \"sorry, I'm a beginner / useless here\". Also recorded in Gotō.",
     nJa: "遊びに入れてもらうが、数に入らない小さな子（おまめさん・みそっかす）。大人が「がめんちょろですみません」と自分を下げて言うことも。",
     ex: [["弟[おとうと]はがめんちょろやけん、鬼[おに]にならんでよか。", "弟[おとうと]はおまめさんだから、鬼[おに]にならなくていい。", "Little brother's just tagging along, so he doesn't have to be 'it'."]],
-    src: ["gotoblog", "asada"], check: true },
+    src: ["local", "gotoblog", "asada"] },
   { id: "shikaburu", k: "word", d: "しかぶる", r: "しかぶる", std: "（おしっこを）もらす", en: "to wet yourself",
     nEn: "Used for little kids having an accident. Shared with other Kyushu dialects.", nJa: "おもらしする。九州各地で使う。",
     ex: [["トイレに行[い]きとうなって、しかぶったりせんかって心配[しんぱい]した。", "トイレに行[い]きたくなって、もらしたりしないかと心配[しんぱい]した。", "I needed the toilet and was worried I'd wet myself."]],

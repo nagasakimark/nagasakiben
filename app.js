@@ -21,8 +21,8 @@
       kind1: { word: "Word", phrase: "Phrase", grammar: "Grammar", culture: "Culture" },
       results: n => `${n} ${n === 1 ? "entry" : "entries"}`, none: "No entries found.",
       back: "Back", meaning: "Meaning", standard: "Standard Japanese", examples: "Examples", source: "Source",
-      check: "Ask a local", noSrc: "No official Nagasaki source found yet.", checkNote: "Widely used in Kyushu, but not confirmed in the official Nagasaki sources used here. A good one to check with friends!",
-      share: "Send to a friend to check", copied: "Copied — paste it to your friend", prev: "Previous", next: "Next",
+      check: "Unverified", noSrc: "No published source.",
+      share: "Share", copied: "Copied", prev: "Previous", next: "Next",
       quizTitle: "Quiz", quizLead: "What does it mean? 10 questions.", start: "Start", whatMeans: "What does this mean?",
       right: "Correct!", wrong: "Not quite —", nextQ: "Next", finish: "See score", again: "Play again", yourScore: "Your score",
       shareHead: "Is this right? (Nagasaki-ben)", shareMean: "Meaning", shareEx: "Example",
@@ -37,8 +37,8 @@
       kind1: { word: "単語", phrase: "フレーズ", grammar: "文法", culture: "文化" },
       results: n => `${n}件`, none: "見つかりませんでした。",
       back: "戻る", meaning: "意味", standard: "標準語", examples: "例文", source: "出典",
-      check: "要確認", noSrc: "長崎の公的資料ではまだ確認できていません。", checkNote: "九州で広く使われる言葉ですが、ここで使った長崎の公的資料では確認できていません。地元の人に確かめてください。",
-      share: "友だちに送って確認する", copied: "コピーしました", prev: "前へ", next: "次へ",
+      check: "未確認", noSrc: "公的な出典なし。",
+      share: "共有", copied: "コピーしました", prev: "前へ", next: "次へ",
       quizTitle: "クイズ", quizLead: "どういう意味？全10問。", start: "スタート", whatMeans: "標準語でどういう意味？",
       right: "正解！", wrong: "ざんねん…", nextQ: "次へ", finish: "結果を見る", again: "もう一度", yourScore: "あなたの点数",
       shareHead: "この長崎弁、合ってる？", shareMean: "意味", shareEx: "例文",
@@ -245,7 +245,6 @@
           ? `<div class="meaning__main" lang="ja">${ruby(e.std)}</div>`
           : `<div class="meaning__main">${esc(e.en)}</div><div class="meaning__sub" lang="ja"><b>${t().standard}</b>${ruby(e.std)}</div>`}
         ${note ? `<div class="note" ${lang === "ja" ? 'lang="ja"' : ""}>${lang === "ja" ? ruby(note) : esc(note)}</div>` : ""}
-        ${e.check ? `<div class="check-note">${t().checkNote}</div>` : ""}
       </section>
       <h2>${t().examples}</h2>
       ${e.ex.map(x => `<div class="ex"><div class="ex__d" lang="ja">${ruby(x[0])}</div>
@@ -338,9 +337,8 @@
         <li>Nagasaki City's long-running <i>Jigemon Mōtokkun</i> column (ナガジン), which pairs native dialect dialogues with standard Japanese. Many example sentences here come from it.</li>
         <li>The Japanese and English Wikipedia articles on the dialect, for grammar.</li>
       </ul>
-      <p>${checked} entries are marked <span class="badge b-check">${T.en.check}</span>. They're common Kyushu words that weren't confirmed in those sources, so please check them with local friends.</p>
-      <h2>Checking with Japanese friends</h2>
-      <p>Tap <b>日本語</b> at the top to switch the whole site into Japanese. On any entry, the <b>💬 send to a friend</b> button shares the word, meaning and example so they can tell you if it sounds right.</p>
+      <p>Entries marked <span class="badge b-check">${T.en.check}</span> (${checked}) are common Kyushu words not found in the sources above.</p>
+      <p>The <b>日本語</b> switch shows the whole site in Japanese.</p>
       <p>Usage varies by area (Sasebo, Isahaya, Shimabara, Gotō…) and by age. Some words here are mostly used by older people.</p>
       </div>`;
     const ja = `
@@ -353,9 +351,8 @@
         <li>長崎市ナガジン「ジゲモン猛特訓」（例文の多くはここから）</li>
         <li>Wikipedia「長崎弁」（文法）</li>
       </ul>
-      <p><span class="badge b-check">${T.ja.check}</span> の${checked}語は九州で広く使われる言葉ですが、上の資料では確認できていません。</p>
-      <h2>まちがいを見つけたら</h2>
-      <p>各ページの「💬 友だちに送って確認する」ボタンで、言葉・意味・例文を送れます。地域（佐世保・諫早・島原・五島など）や年代によって使い方がちがうことがあります。</p>
+      <p><span class="badge b-check">${T.ja.check}</span>（${checked}語）は九州で広く使われる言葉で、上の資料には載っていないものです。</p>
+      <p>地域（佐世保・諫早・島原・五島など）や年代によって使い方がちがうことがあります。</p>
       </div>`;
     app.innerHTML = lang === "ja" ? ja : en;
   }
