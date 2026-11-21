@@ -340,7 +340,7 @@ window.ENTRIES = [
   { id: "tamagaru", check: true, k: "word", d: "たまがる", r: "たまがる", std: "びっくりする", en: "to be surprised",
     nEn: "Kyushu-wide.", nJa: "驚く。九州で広く使う。",
     ex: [["急[きゅう]に出[で]てきて、たまがった！", "急[きゅう]に出[で]てきて、びっくりした！", "You made me jump!"]], src: [] },
-  { id: "hotattotte", check: true, k: "phrase", d: "ほたっとって", r: "ほたっとって", std: "放[ほう]っておいて", en: "leave it / leave me alone",
+  { id: "hotattotte", check: true, k: "word", d: "ほたっとって", r: "ほたっとって", std: "放[ほう]っておいて", en: "leave it / leave me alone",
     nEn: "From ほたっとく (= 放っておく, to leave alone). Can be a request (\"just leave it\") or a brush-off (\"leave me alone!\"). Heard across northern Kyushu.",
     nJa: "「放っておいて」。ほたっとく（放っておく）から。九州北部で広く使う。",
     ex: [["そいはそのままほたっとって。", "それはそのまま放[ほう]っておいて。", "Just leave that as it is."],
