@@ -375,7 +375,7 @@
         <li>Nagasaki City's long-running <i>Jigemon Mōtokkun</i> column (ナガジン), which pairs native dialect dialogues with standard Japanese. Many example sentences here come from it.</li>
         <li>The Japanese and English Wikipedia articles on the dialect, for grammar.</li>
       </ul>
-      <p>Entries marked <span class="badge b-check">${T.en.check}</span> (${checked}) are common Kyushu words not found in the sources above.</p>
+      <p>Entries marked <span class="badge b-check">${T.en.check}</span> (${checked}) are not yet confirmed in an official or academic source. Where they list a source, it is an informal one such as a blog or web survey.</p>
       <p>The <b>日本語</b> switch shows the whole site in Japanese.</p>
       <p>Usage varies by area (Sasebo, Isahaya, Shimabara, Gotō…) and by age. Some words here are mostly used by older people.</p>
       </div>`;
@@ -389,7 +389,7 @@
         <li>長崎市ナガジン「ジゲモン猛特訓」（例文の多くはここから）</li>
         <li>Wikipedia「長崎弁」（文法）</li>
       </ul>
-      <p><span class="badge b-check">${T.ja.check}</span>（${checked}語）は九州で広く使われる言葉で、上の資料には載っていないものです。</p>
+      <p><span class="badge b-check">${T.ja.check}</span>（${checked}語）は、公的・学術的な資料ではまだ確認できていない言葉です。出典がある場合は、ブログやウェブ調査など非公式なものです。</p>
       <p>地域（佐世保・諫早・島原・五島など）や年代によって使い方がちがうことがあります。</p>
       </div>`;
     app.innerHTML = lang === "ja" ? ja : en;
